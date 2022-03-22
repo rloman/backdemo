@@ -8,6 +8,7 @@ class PraktijkApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//comment
 	}
 
 }
