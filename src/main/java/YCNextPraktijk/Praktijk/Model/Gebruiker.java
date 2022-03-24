@@ -1,5 +1,6 @@
 package YCNextPraktijk.Praktijk.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,12 +13,14 @@ public class Gebruiker {
 	
 	private long id;
 	
+	@Column(unique=true)
 	private String gebruikersNaam;
 	private String wachtwoord; // TODO: Use security tools
 	private String displayNaam;
 	private String Beschrijving;
 	//private String socialMedia;
 	//private String profilePicture;
+	
 	public long getId() {
 		return id;
 	}

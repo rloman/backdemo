@@ -16,6 +16,7 @@ public class Gebruiker_Service {
 		geb.setWachtwoord(ww);
 		geb.setDisplayNaam(dn);
 		geb.setBeschrijving(desc);
+		System.out.println("Adding user " + gn);
 		gr.save(geb);
 	}
 	
@@ -29,6 +30,26 @@ public class Gebruiker_Service {
 			if (g.getGebruikersNaam().equals(gn) && g.getWachtwoord().equals(ww)) {
 				System.out.println("Deleting user "+g.getGebruikersNaam());
 				gr.delete(g);
+			}
+		}
+	}
+	
+	public void updateDisplay(String gn, String ww, String dn) {
+		Iterable<Gebruiker> all = gr.findAll();
+		for (Gebruiker g : all) {
+			if (g.getGebruikersNaam().equals(gn) && g.getWachtwoord().equals(ww)) {
+				System.out.println("Updating displayName for user "+g.getGebruikersNaam());
+				g.setDisplayNaam(dn);
+			}
+		}
+	}
+	
+	public void updateDesc(String gn, String ww, String desc) {
+		Iterable<Gebruiker> all = gr.findAll();
+		for (Gebruiker g : all) {
+			if (g.getGebruikersNaam().equals(gn) && g.getWachtwoord().equals(ww)) {
+				System.out.println("Updating description for user "+g.getGebruikersNaam());
+				g.setBeschrijving(desc);
 			}
 		}
 	}

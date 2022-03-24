@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
@@ -17,7 +18,7 @@ public class Gebruiker_Endpoint {
 	
 	@PostMapping("/new/{naam}/{wachtwoord}/{display}/{desc}")
 	public void nieuweGebruiker(@PathVariable String naam, @PathVariable String wachtwoord
-								, @PathVariable String display, @PathVariable String desc) {
+							  , @PathVariable String display, @PathVariable String desc) {
 		gs.slaGebruikerOp(naam, wachtwoord, display, desc);	
 	}
 
@@ -29,5 +30,17 @@ public class Gebruiker_Endpoint {
 	@DeleteMapping("/remove/{naam}/{wachtwoord}")
 	public void deleteGebruiker(@PathVariable String naam, @PathVariable String wachtwoord) {
 		gs.deleteGebruiker(naam, wachtwoord);
+	}
+	
+	@PutMapping("updateDisplay/{naam}/{wachtwoord}/{display}")
+	public void updateDisplayNaam(@PathVariable String naam, @PathVariable String wachtwoord
+								, @PathVariable String display) {
+		gs.updateDisplay(naam, wachtwoord, display);
+	}
+	
+	@PutMapping("updateDescription/{naam}/{wachtwoord}/{display}")
+	public void updateDescription(@PathVariable String naam, @PathVariable String wachtwoord
+								, @PathVariable String desc) {
+		gs.updateDesc(naam, wachtwoord, desc);
 	}
 }
