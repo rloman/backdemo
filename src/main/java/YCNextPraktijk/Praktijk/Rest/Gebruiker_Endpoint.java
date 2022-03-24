@@ -1,10 +1,12 @@
 package YCNextPraktijk.Praktijk.Rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.Persistence.Gebruiker_Service;
 
 @RestController
@@ -18,4 +20,8 @@ public class Gebruiker_Endpoint {
 		gs.slaGebruikerOp(naam, wachtwoord, display, desc);	
 	}
 
+	@GetMapping("/alleGebruikers")
+	public Iterable<Gebruiker> alleGebruikers() {
+		return gs.alleGebruikers();
+	}
 }

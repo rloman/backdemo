@@ -18,4 +18,8 @@ public class Gebruiker_Service {
 		geb.setBeschrijving(desc);
 		gr.save(geb);
 	}
+	
+	public Iterable<Gebruiker> alleGebruikers() {
+		return gr.findAll();
+	}
 }
