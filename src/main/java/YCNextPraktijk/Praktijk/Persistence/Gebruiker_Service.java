@@ -1,6 +1,7 @@
 package YCNextPraktijk.Praktijk.Persistence;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
@@ -17,7 +18,10 @@ public class Gebruiker_Service {
 		geb.setDisplayNaam(dn);
 		geb.setBeschrijving(desc);
 		System.out.println("Adding user " + gn);
-		gr.save(geb);
+		try {gr.save(geb);}
+		catch (DataIntegrityViolationException e) {
+			System.out.println(e);
+		}
 	}
 	
 	public Iterable<Gebruiker> alleGebruikers() {
