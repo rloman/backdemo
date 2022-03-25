@@ -17,7 +17,7 @@ public class Gebruiker {
 	private String gebruikersNaam;
 	private String wachtwoord; // TODO: Use security tools
 	private String displayNaam;
-	private String Beschrijving;
+	private String beschrijving;
 	//private String socialMedia;
 	//private String profilePicture;
 	
@@ -45,11 +45,11 @@ public class Gebruiker {
 	public void setDisplayNaam(String displayNaam) {
 		this.displayNaam = displayNaam;
 	}
-	public String getBeschrijving() {
-		return Beschrijving;
+	public String getbeschrijving() {
+		return beschrijving;
 	}
-	public void setBeschrijving(String beschrijving) {
-		Beschrijving = beschrijving;
+	public void setbeschrijving(String beschrijving) {
+		this.beschrijving = beschrijving;
 	}
 
 }
