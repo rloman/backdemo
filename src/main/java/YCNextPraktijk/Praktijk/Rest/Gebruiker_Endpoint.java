@@ -27,20 +27,13 @@ public class Gebruiker_Endpoint {
 		return gs.alleGebruikers();
 	}
 	
-	@DeleteMapping("/remove/{naam}/{wachtwoord}")
-	public void deleteGebruiker(@PathVariable String naam, @PathVariable String wachtwoord) {
-		gs.deleteGebruiker(naam, wachtwoord);
+	@DeleteMapping("/remove/{id}")
+	public void deleteGebruiker(@PathVariable long id) {
+		gs.deleteGebruiker(id);
 	}
 	
-	@PutMapping("updateDisplay/{naam}/{wachtwoord}/{display}")
-	public void updateDisplayNaam(@PathVariable String naam, @PathVariable String wachtwoord
-								, @PathVariable String display) {
-		gs.updateDisplay(naam, wachtwoord, display);
-	}
-	
-	@PutMapping("updateDescription/{naam}/{wachtwoord}/{desc}")
-	public void updateDescription(@PathVariable String naam, @PathVariable String wachtwoord
-								, @PathVariable String desc) {
-		gs.updateDesc(naam, wachtwoord, desc);
+	@PutMapping("update/{id}")
+	public void updateDisplayNaam(@RequestBody Gebruiker geb, @PathVariable long id) {
+		gs.update(geb, id);
 	}
 }

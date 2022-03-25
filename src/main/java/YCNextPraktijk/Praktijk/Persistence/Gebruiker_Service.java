@@ -23,21 +23,19 @@ public class Gebruiker_Service {
 		return gr.findAll();
 	}
 	
-	public void deleteGebruiker(String gn, String ww) {
-		Gebruiker g = gr.findByGebruikersNaamAndWachtwoord(gn, ww);
-		System.out.println("Deleting user "+g.getGebruikersNaam());
-		gr.delete(g);
+	public void deleteGebruiker(long id) {
+		System.out.println("Deleting user "+gr.findById(id).get().getGebruikersNaam());
+		gr.deleteById(id);
 	}
 	
-	public void updateDisplay(String gn, String ww, String dn) {
-		Gebruiker g = gr.findByGebruikersNaamAndWachtwoord(gn, ww);
-		System.out.println("Updating displayName for user "+g.getGebruikersNaam());
-		g.setDisplayNaam(dn);
+	public void update(Gebruiker geb, long id) {
+		Gebruiker geb2 = gr.findById(id).get();
+		System.out.println("Updating user "+geb2.getGebruikersNaam());
+		geb2.setGebruikersNaam(geb.getGebruikersNaam());
+		geb2.setWachtwoord(geb.getWachtwoord());
+		geb2.setDisplayNaam(geb.getDisplayNaam());
+		geb2.setbeschrijving(geb.getbeschrijving());
+		gr.save(geb2);
 	}
-	
-	public void updateDesc(String gn, String ww, String desc) {
-		Gebruiker g = gr.findByGebruikersNaamAndWachtwoord(gn, ww);
-		System.out.println("Updating description for user "+g.getGebruikersNaam());
-		g.setbeschrijving(desc);
-	}
+
 }
