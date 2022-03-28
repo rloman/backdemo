@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 
 @Component
-public interface Gebruiker_Repository extends CrudRepository<Gebruiker, Long> {
+public interface GebruikerRepository extends CrudRepository<Gebruiker, Long> {
 
 }

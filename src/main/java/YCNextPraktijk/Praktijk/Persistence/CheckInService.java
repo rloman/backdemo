@@ -3,19 +3,19 @@ package YCNextPraktijk.Praktijk.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import YCNextPraktijk.Praktijk.Model.Check_In;
+import YCNextPraktijk.Praktijk.Model.CheckIn;
 
 @Service
-public class Check_In_Service {
+public class CheckInService {
 	
 	@Autowired
-	private Check_In_Repository cir;
+	private CheckInRepository cir;
 	
-	public Iterable<Check_In> zoekCheckin(String s){
+	public Iterable<CheckIn> zoekCheckin(String s){
 		return cir.findCheck_InsByBordspel(s);
 	}
 	
-	public Iterable<Check_In> geefCheckinsTerug() {
+	public Iterable<CheckIn> geefCheckinsTerug() {
 		return cir.findAll();	
 	}
 	
@@ -25,10 +25,10 @@ public class Check_In_Service {
 	}
 	
 	public void slaCheck_InOp() {
-		cir.save(new Check_In());
+		cir.save(new CheckIn());
 	}
 
-	public void slaDezeCheck_InOp(Check_In ci) {
+	public void slaDezeCheck_InOp(CheckIn ci) {
 		cir.save(ci);
 	}
 	

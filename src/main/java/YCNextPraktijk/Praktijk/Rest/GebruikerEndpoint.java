@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
-import YCNextPraktijk.Praktijk.Persistence.Gebruiker_Service;
+import YCNextPraktijk.Praktijk.Persistence.GebruikerService;
 
 @RestController
-public class Gebruiker_Endpoint {
+public class GebruikerEndpoint {
 	@Autowired
-	private Gebruiker_Service gs;
+	private GebruikerService gs;
 	
 	@PostMapping("/new/{naam}/{wachtwoord}/{display}/{desc}")
 	public void nieuweGebruiker(@PathVariable String naam, @PathVariable String wachtwoord
