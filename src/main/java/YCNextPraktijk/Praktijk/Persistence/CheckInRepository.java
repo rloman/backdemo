@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-import YCNextPraktijk.Praktijk.Model.Check_In;
+import YCNextPraktijk.Praktijk.Model.CheckIn;
 
 @Component
-public interface Check_In_Repository extends CrudRepository<Check_In, Long> {
-	List<Check_In> findCheck_InsByBordspel(String bordspel);
+public interface CheckInRepository extends CrudRepository<CheckIn, Long> {
+	List<CheckIn> findCheck_InsByBordspel(String bordspel);
 }
