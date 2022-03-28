@@ -7,5 +7,5 @@ import YCNextPraktijk.Praktijk.Model.Gebruiker;
 
 @Component
 public interface GebruikerRepository extends CrudRepository<Gebruiker, Long> {
-
+	Gebruiker findByGebruikersNaamAndWachtwoord(String gn, String ww);
 }

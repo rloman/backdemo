@@ -32,4 +32,17 @@ public class CheckInService {
 		cir.save(ci);
 	}
 	
+	public void deleteCheck_In(String bordspel) {
+		for (Check_In c : cir.iterator()) {
+			if (c.bordspel == bordspel) {
+				cir.remove(c);
+				return;
+			}
+		}
+	}
+	
+	public void updateCheck_In() {
+		
+	}
+	
 }
