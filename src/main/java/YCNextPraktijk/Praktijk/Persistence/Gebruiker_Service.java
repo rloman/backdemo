@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 
 @Service
-public class GebruikerService {
+public class Gebruiker_Service {
 	@Autowired
-	private GebruikerRepository gr;
+	private Gebruiker_Repository gr;
 	
 	public void slaGebruikerOp(Gebruiker geb) {
 		System.out.println("Adding user " + geb.getGebruikersNaam());
