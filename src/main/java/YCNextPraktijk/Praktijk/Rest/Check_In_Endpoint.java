@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import YCNextPraktijk.Praktijk.Model.CheckIn;
-import YCNextPraktijk.Praktijk.Persistence.CheckInService;
+import YCNextPraktijk.Praktijk.Model.Check_In;
+import YCNextPraktijk.Praktijk.Persistence.Check_In_Service;
 
 
 @RestController
-public class CheckInEndpoint {
+public class Check_In_Endpoint {
 	@Autowired
-	private CheckInService cis;
+	private Check_In_Service cis;
 	
 	
 	@GetMapping("/zoekcheckin/{query}")
-	public Iterable <CheckIn> eenCheckin(@RequestParam String bordspel){
+	public Iterable <Check_In> eenCheckin(@RequestParam String bordspel){
 		System.out.println("specific checkin");
 		return cis.zoekCheckin(bordspel);
 	}
 	
 	@GetMapping("/allecheckins")
-	public Iterable<CheckIn> alleCheckins() {
+	public Iterable<Check_In> alleCheckins() {
 		System.out.println("alle checkins");
 		return cis.geefCheckinsTerug();
 	}
@@ -40,14 +40,14 @@ public class CheckInEndpoint {
 	public void slaNieuweCheck_InOp(@PathVariable String spel, @PathVariable String locatie, @PathVariable float rating,
 			@PathVariable String review, @PathVariable boolean win) {
 		System.out.println("test: " + spel);
-		CheckIn ci = new CheckIn();
+		Check_In ci = new Check_In();
 		ci.setBordspel(spel); ci.setLocatie(locatie); 
 		ci.setRating(rating); ci.setReview(review); 
 		ci.setWin(win);
 		cis.slaDezeCheck_InOp(ci);
 	}
 	@PostMapping("/test2")
-	public void testPostMethode(@RequestBody CheckIn checkin) {
+	public void testPostMethode(@RequestBody Check_In checkin) {
 		System.out.println(checkin.getReview());
 		cis.slaDezeCheck_InOp(checkin);
 		// Hier moet je in Postman in de body van de request de variabelen zetten

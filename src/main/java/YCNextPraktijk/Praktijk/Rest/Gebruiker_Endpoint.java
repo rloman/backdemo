@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
-import YCNextPraktijk.Praktijk.Persistence.GebruikerService;
+import YCNextPraktijk.Praktijk.Persistence.Gebruiker_Service;
 
 @RestController
-public class GebruikerEndpoint {
+public class Gebruiker_Endpoint {
 	@Autowired
-	private GebruikerService gs;
+	private Gebruiker_Service gs;
 	
 	@PostMapping("/new")
 	public void nieuweGebruiker(@RequestBody Gebruiker geb) {
