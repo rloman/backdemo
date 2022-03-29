@@ -24,7 +24,7 @@ public class Gebruiker {
 	@OneToMany(mappedBy = "gebruiker")
 	private List<CheckIn> ciList;
 	//private String socialMedia;
-	//private String profilePicture;
+	private String profilePicture;
 	
 	public long getId() {
 		return id;
@@ -61,6 +61,12 @@ public class Gebruiker {
 	}
 	public void setbeschrijving(String beschrijving) {
 		this.beschrijving = beschrijving;
+	}
+	public String getProfilePicture() {
+		return profilePicture;
+	}
+	public void setProfilePicture(String profilePicture) {
+		this.profilePicture = profilePicture;
 	}
 
 }
