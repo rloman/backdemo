@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 
 @Service
 public class Gebruiker_Service {
 	@Autowired
 	private Gebruiker_Repository gr;
+	@Autowired
+	private Check_In_Service cs;
 	
 	public void slaGebruikerOp(Gebruiker geb) {
 		System.out.println("Adding user " + geb.getGebruikersNaam());
@@ -25,6 +28,10 @@ public class Gebruiker_Service {
 	
 	public void deleteGebruiker(long id) {
 		System.out.println("Deleting user "+gr.findById(id).get().getGebruikersNaam());
+		for (CheckIn c : gr.findById(id).get().getCiList()) {
+			System.out.println("Deleting CheckIn "+c.getId());
+			cs.deleteCheck_In(c.getId());
+		}
 		gr.deleteById(id);
 	}
 	
@@ -38,4 +45,9 @@ public class Gebruiker_Service {
 		gr.save(geb2);
 	}
 
+	public void newCheckIn(long id, CheckIn c) {
+		Gebruiker geb = gr.findById(id).get();
+		c.setGebruiker(geb);
+		cs.slaDezeCheck_InOp(c);
+	}
 }

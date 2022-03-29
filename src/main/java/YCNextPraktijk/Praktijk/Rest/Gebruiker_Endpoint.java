@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.Persistence.Gebruiker_Service;
 
@@ -22,6 +23,11 @@ public class Gebruiker_Endpoint {
 		gs.slaGebruikerOp(geb);	
 	}
 
+	@PostMapping("/newCheckIn/{id}")
+	public void nieuweCheckin(@RequestBody CheckIn c, @PathVariable long id) {
+		gs.newCheckIn(id, c);
+	}
+	
 	@GetMapping("/alleGebruikers")
 	public Iterable<Gebruiker> alleGebruikers() {
 		return gs.alleGebruikers();
