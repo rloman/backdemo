@@ -1,10 +1,13 @@
 package YCNextPraktijk.Praktijk.Model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Gebruiker {
@@ -18,11 +21,19 @@ public class Gebruiker {
 	private String wachtwoord; // TODO: Use security tools
 	private String displayNaam;
 	private String beschrijving;
+	@OneToMany(mappedBy = "gebruiker")
+	private List<CheckIn> ciList;
 	//private String socialMedia;
 	//private String profilePicture;
 	
 	public long getId() {
 		return id;
+	}
+	public List<CheckIn> getCiList() {
+		return ciList;
+	}
+	public void setCiList(List<CheckIn> ciList) {
+		this.ciList = ciList;
 	}
 	public void setId(long id) {
 		this.id = id;

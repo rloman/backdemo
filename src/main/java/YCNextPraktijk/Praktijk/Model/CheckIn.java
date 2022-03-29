@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CheckIn {
@@ -17,6 +19,18 @@ public class CheckIn {
 	private Boolean win;
 	private Float rating;
 	private String review;
+	
+	@ManyToOne
+    @JoinColumn(name = "gebruiker_id")
+    private Gebruiker gebruiker;
+	
+	public Gebruiker getGebruiker() {
+		return gebruiker;
+	}
+	public void setGebruiker(Gebruiker gebruiker) {
+		this.gebruiker = gebruiker;
+	}
+	
 	public long getId() {
 		return id;
 	}
