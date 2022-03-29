@@ -33,6 +33,11 @@ public class Gebruiker_Endpoint {
 		return gs.alleGebruikers();
 	}
 	
+	@GetMapping("/login/{naam}")//geen wachtwoord voor nu
+	public long login(@PathVariable String naam) {
+		return gs.findGebruikerID(naam);
+	}
+	
 	@DeleteMapping("/remove/{id}")
 	public void deleteGebruiker(@PathVariable long id) {
 		gs.deleteGebruiker(id);

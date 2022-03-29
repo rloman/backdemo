@@ -26,6 +26,10 @@ public class Gebruiker_Service {
 		return gr.findAll();
 	}
 	
+	public long findGebruikerID(String naam) {
+		return gr.findByGebruikersNaam(naam).getId();
+	}
+	
 	public void deleteGebruiker(long id) {
 		System.out.println("Deleting user "+gr.findById(id).get().getGebruikersNaam());
 		for (CheckIn c : gr.findById(id).get().getCiList()) {
