@@ -38,6 +38,11 @@ public class Gebruiker_Endpoint {
 		return gs.findGebruikerID(naam);
 	}
 	
+	@GetMapping("alleCheckins/{id}")
+	public Iterable<CheckIn> alleCheckins(@PathVariable long id) {
+		return gs.alleCheckins(id)
+;	}
+	
 	@DeleteMapping("/remove/{id}")
 	public void deleteGebruiker(@PathVariable long id) {
 		gs.deleteGebruiker(id);
