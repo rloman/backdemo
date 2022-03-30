@@ -54,4 +54,10 @@ public class Gebruiker_Service {
 		c.setGebruiker(geb);
 		cs.slaDezeCheck_InOp(c);
 	}
+	
+	public Iterable<CheckIn> alleCheckins(long id) {
+		Gebruiker geb = gr.findById(id).get();
+		Iterable<CheckIn> iterable = geb.getCiList();
+		return iterable;
+	}
 }

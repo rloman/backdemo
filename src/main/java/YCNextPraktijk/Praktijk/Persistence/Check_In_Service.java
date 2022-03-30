@@ -12,7 +12,7 @@ public class Check_In_Service {
 	private Check_In_Repository cir;
 	
 	public Iterable<CheckIn> zoekCheckin(String s){
-		return cir.findCheck_InsByBordspel(s);
+		return cir.findCheckInsByBordspel(s);
 	}
 	
 	public Iterable<CheckIn> geefCheckinsTerug() {

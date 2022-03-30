@@ -17,9 +17,9 @@ public class Check_In_Endpoint {
 	@Autowired
 	private Check_In_Service cis;
 	
-	
-	@GetMapping("/zoekcheckin/{query}")
-	public Iterable <CheckIn> eenCheckin(@RequestParam String bordspel){
+	//fetch(localhost/zoekcheckin?bordspel=TAAifFP590)
+	@GetMapping("/zoekcheckin")
+	public Iterable<CheckIn> zoekCheckin(@RequestParam String bordspel){
 		System.out.println("specific checkin");
 		return cis.zoekCheckin(bordspel);
 	}
@@ -30,13 +30,15 @@ public class Check_In_Endpoint {
 		return cis.geefCheckinsTerug();
 	}
 	
+	//OefenFunctie
 	@GetMapping("/aantalcheckins")
 	public void aantalCheckins() {
 		System.out.println("aantal checkins");
 		cis.allesTellen();
 	}
 	
-	@GetMapping("/checkin/{spel}/{locatie}/{rating}/{review}/{win}")
+	//OefenFunctie
+	/*@GetMapping("/checkin/{spel}/{locatie}/{rating}/{review}/{win}")
 	public void slaNieuweCheck_InOp(@PathVariable String spel, @PathVariable String locatie, @PathVariable float rating,
 			@PathVariable String review, @PathVariable boolean win) {
 		System.out.println("test: " + spel);
@@ -46,10 +48,11 @@ public class Check_In_Endpoint {
 		ci.setWin(win);
 		cis.slaDezeCheck_InOp(ci);
 	}
+	
 	@PostMapping("/test2")
 	public void testPostMethode(@RequestBody CheckIn checkin) {
 		System.out.println(checkin.getReview());
 		cis.slaDezeCheck_InOp(checkin);
 		// Hier moet je in Postman in de body van de request de variabelen zetten
-	}
+	}*/
 }

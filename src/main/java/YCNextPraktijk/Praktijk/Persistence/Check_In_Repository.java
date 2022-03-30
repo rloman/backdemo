@@ -9,5 +9,5 @@ import YCNextPraktijk.Praktijk.Model.CheckIn;
 
 @Component
 public interface Check_In_Repository extends CrudRepository<CheckIn, Long> {
-	List<CheckIn> findCheck_InsByBordspel(String bordspel);
+	List<CheckIn> findCheckInsByBordspel(String bordspel);
 }
