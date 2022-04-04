@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.Persistence.Gebruiker_Service;
+import YCNextPraktijk.Praktijk.dto.CheckinDTO;
 
 @RestController
 public class Gebruiker_Endpoint {
@@ -39,9 +40,9 @@ public class Gebruiker_Endpoint {
 	}
 	
 	@GetMapping("alleCheckins/{id}")
-	public Iterable<CheckIn> alleCheckins(@PathVariable long id) {
-		return gs.alleCheckins(id)
-;	}
+	public Iterable<CheckinDTO> alleCheckins(@PathVariable long id) {
+		return gs.alleCheckins(id);	
+	}
 	
 	@DeleteMapping("/remove/{id}")
 	public void deleteGebruiker(@PathVariable long id) {

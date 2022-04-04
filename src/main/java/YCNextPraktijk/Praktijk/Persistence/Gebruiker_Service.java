@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
+import YCNextPraktijk.Praktijk.assembler.CheckinAssembler;
+import YCNextPraktijk.Praktijk.dto.CheckinDTO;
 
 @Service
 public class Gebruiker_Service {
@@ -13,6 +15,9 @@ public class Gebruiker_Service {
 	private Gebruiker_Repository gr;
 	@Autowired
 	private Check_In_Service cs;
+	@Autowired
+	private CheckinAssembler ca;
+	
 	
 	public void slaGebruikerOp(Gebruiker geb) {
 		System.out.println("Adding user " + geb.getGebruikersNaam());
@@ -55,9 +60,8 @@ public class Gebruiker_Service {
 		cs.slaDezeCheck_InOp(c);
 	}
 	
-	public Iterable<CheckIn> alleCheckins(long id) {
+	public Iterable<CheckinDTO> alleCheckins(long id) {
 		Gebruiker geb = gr.findById(id).get();
-		Iterable<CheckIn> iterable = geb.getCiList();
-		return iterable;
+		return ca.alleCheckinDTOs(geb.getCiList());
 	}
 }
