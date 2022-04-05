@@ -19,6 +19,7 @@ public class Gebruiker {
 	@Column(unique=true)
 	private String gebruikersNaam;
 	private String wachtwoord; // TODO: Use security tools
+	@Column(unique=true)
 	private String displayNaam;
 	private String beschrijving;
 	@OneToMany(mappedBy = "gebruiker")

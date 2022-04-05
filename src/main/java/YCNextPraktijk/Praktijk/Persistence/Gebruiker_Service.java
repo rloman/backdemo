@@ -8,6 +8,7 @@ import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.assembler.CheckinAssembler;
 import YCNextPraktijk.Praktijk.dto.CheckinDTO;
+import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
 
 @Service
 public class Gebruiker_Service {
@@ -60,13 +61,17 @@ public class Gebruiker_Service {
 		cs.slaDezeCheck_InOp(c);
 	}
 	
-	public Iterable<CheckinDTO> alleCheckins(long id) {
+	public Iterable<CheckIn> alleCheckins(long id) {
 		Gebruiker geb = gr.findById(id).get();
-		return ca.alleCheckinDTOs(geb.getCiList());
+		return geb.getCiList();
 	}
 	
 	public Gebruiker vindGebruiker(long id) {
 		return gr.findById(id).get();
+	}
+	
+	public Gebruiker vindGebruikerPerDisplayNaam(String dn) {
+		return gr.findByDisplayNaam(dn);
 	}
 	
 }
