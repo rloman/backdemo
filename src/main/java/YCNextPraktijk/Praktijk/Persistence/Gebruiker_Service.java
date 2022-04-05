@@ -64,4 +64,9 @@ public class Gebruiker_Service {
 		Gebruiker geb = gr.findById(id).get();
 		return ca.alleCheckinDTOs(geb.getCiList());
 	}
+	
+	public Gebruiker vindGebruiker(long id) {
+		return gr.findById(id).get();
+	}
+	
 }
