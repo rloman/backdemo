@@ -13,13 +13,22 @@ import org.springframework.web.bind.annotation.RestController;
 import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.Persistence.Gebruiker_Service;
+import YCNextPraktijk.Praktijk.assembler.CheckinAssembler;
+import YCNextPraktijk.Praktijk.assembler.GebruikerAssembler;
 import YCNextPraktijk.Praktijk.dto.CheckinDTO;
+import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
 
 @RestController
 @RequestMapping("api/gebruikers")
 public class Gebruiker_Endpoint {
 	@Autowired
 	private Gebruiker_Service gs;
+	
+	@Autowired
+	private GebruikerAssembler ga;
+	
+	@Autowired
+	private CheckinAssembler ca;
 	
 	@GetMapping
 	public Iterable<Gebruiker> alleGebruikers() {
@@ -32,13 +41,18 @@ public class Gebruiker_Endpoint {
 	}
 
 	@PutMapping("{id}")
-	public void updateDisplayNaam(@RequestBody Gebruiker geb, @PathVariable long id) {
+	public void updateGebruiker(@RequestBody Gebruiker geb, @PathVariable long id) {
 		gs.update(geb, id);
 	}
 	
 	@DeleteMapping("{id}")
 	public void deleteGebruiker(@PathVariable long id) {
 		gs.deleteGebruiker(id);
+	}
+	
+	@GetMapping("vind/{naam}")
+	public GebruikerDTO vindGebruiker(@PathVariable String naam) {
+		return ga.assemble(gs.vindGebruikerPerDisplayNaam(naam));
 	}
 	
 	@GetMapping("login/{naam}")
@@ -48,7 +62,7 @@ public class Gebruiker_Endpoint {
 	
 	@GetMapping("allecheckins/{id}")
 	public Iterable<CheckinDTO> alleCheckins(@PathVariable long id) {
-		return gs.alleCheckins(id);	
+		return ca.alleCheckinDTOs(gs.alleCheckins(id));	
 	}
 	
 	@PostMapping("newcheckin/{id}")
