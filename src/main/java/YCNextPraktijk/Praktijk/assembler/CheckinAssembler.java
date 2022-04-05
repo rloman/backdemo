@@ -3,9 +3,12 @@ package YCNextPraktijk.Praktijk.assembler;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.dto.CheckinDTO;
 
+@Component
 public class CheckinAssembler {
 
 	public CheckinDTO assemble (CheckIn checkin) {
