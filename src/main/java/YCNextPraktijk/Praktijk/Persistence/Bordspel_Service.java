@@ -15,5 +15,8 @@ public class Bordspel_Service {
 		return br.findAll();	
 	}
 	
-	
+	public void slaBordspelOp(Bordspel bs) {
+		br.save(bs);
+		System.out.println(bs);
+	}	
 }

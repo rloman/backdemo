@@ -2,6 +2,8 @@ package YCNextPraktijk.Praktijk.Rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +18,7 @@ import YCNextPraktijk.Praktijk.Persistence.Check_In_Service;
 public class Bordspel_Endpoint {
 
 	@Autowired
-	private Bordspel_Service bs;
+	private Bordspel_Service bs; 
 	
 	@Autowired
 	private Check_In_Service cs;
@@ -35,6 +37,11 @@ public class Bordspel_Endpoint {
 			total += c.getRating();
 			count++;
 		}
-		return total/count;
+		return total/count;	
+	}
+	
+	@PostMapping
+	public void bordspel(@RequestBody Bordspel bo) {
+		bs.slaBordspelOp(bo);	
 	}
 }
