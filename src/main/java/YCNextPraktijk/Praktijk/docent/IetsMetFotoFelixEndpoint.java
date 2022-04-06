@@ -21,10 +21,10 @@ public class IetsMetFotoFelixEndpoint {
 		return imf.get();
 	}
 	@PostMapping("/voegfototoe")
-	public String voegObjectMetFotoToe(@RequestBody IetsMetFotoFelix imff) {
+	public long voegObjectMetFotoToe(@RequestBody IetsMetFotoFelix imff) {
 		System.out.println("yes binnen bij foto");
 		imffr.save(imff);
-		return "werkt";
+		return imff.getId();
 	}
 	
 	
