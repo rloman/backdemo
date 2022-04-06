@@ -1,5 +1,6 @@
 package YCNextPraktijk.Praktijk.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,8 @@ public class CheckIn {
 	private String bordspel;
 	private String locatie;
 	private Boolean win;
+	
+	@Column(nullable=false)
 	private Float rating;
 	private String review;
 	
